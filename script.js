@@ -200,15 +200,8 @@ let deleteData = async () => {
     .catch(error => error);
 }
 
-
-    
-
-
-
-
-
 function showHide(obj) {
-    for(x=1;x<=1;x++) {
+    for(x=1;x<=2;x++) {
         if (x == obj) {
         document.getElementById('m'+x).style.display = 'block'; 
         } else { 
@@ -232,4 +225,3 @@ function openF(obj) {
             }
         }
     }
-
