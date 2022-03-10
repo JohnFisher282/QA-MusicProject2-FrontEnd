@@ -1,0 +1,51 @@
+body {
+  background-image: url(music_background.jpg);
+  background-attachment: fixed;
+  background-size: 1920px 1080px;
+  font-family: American Typewriter, serif !important;
+}
+.headers {
+  position: relative;
+  left: 100px;
+  width: 600px;
+  border: 2px gray;
+  border-radius: 5px;
+  background-color: darkslategray;
+  color: coral;
+}
+
+input[type="text"] {
+  background-color: gray;
+}
+
+::placeholder {
+  color: brown;
+}
+
+.findbytable {
+  margin: 0px;
+}
+
+.forms {
+  position: relative;
+  width: 400px;
+  margin: 8px;
+  border: 2px coral;
+  border-radius: 5px;
+  background-color: darkslategray;
+  color: coral;
+}
+.maintable {
+  position: absolute;
+  margin-left: 30%;
+  margin-bottom: 50%;
+  border-radius: 5px;
+  background-color: darkslategray;
+  border: 2px solid darkslategray;
+  color: coral;
+}
+
+th,
+td {
+  border: 2px solid gray !important;
+}

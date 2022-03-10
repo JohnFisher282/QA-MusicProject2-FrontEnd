@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Project 2 - MusicBook</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <h1 class="headers">Welcome to the QA MusicBook!</h1>
+    <h2 class="headers">Add or view your favourite songs and artists!</h2>
+    <br /><br />
+    <table id="music" class="maintable"></table>
+    <button class="btn btn-dark" onclick="showHide(1)">Show Music By...</button
+    ><br />
+    <div id="m1" style="display: none">
+      <table class="findbytable">
+        <button class="btn btn-secondary" onclick="openF(9);">ID</button>
+        <button class="btn btn-secondary" onclick="openF(1);">Song</button>
+        <button class="btn btn-secondary" onclick="openF(2);">Album</button>
+        <button class="btn btn-secondary" onclick="openF(3);">Artist</button>
+        <button class="btn btn-secondary" onclick="openF(4);">
+          Release Date
+        </button>
+        <button class="btn btn-secondary" onclick="openF(5);">
+          Artist Country
+        </button>
+        <button class="btn btn-danger" onclick="showHide(2)">Close</button>
+      </table>
+    </div>
+    <button
+      class="btn btn-dark"
+      action="http://localhost:8080/getAll"
+      onclick="showData(1)"
+    >
+      Show All Entries...</button
+    ><br />
+    <div id="f9" style="display: none">
+      <form class="forms">
+        <h2>Enter an ID number</h2>
+
+        <label for="id">ID</label>
+        <input id="id" type="text" placeholder="ID..." name="id" />
+
+        <button type="button" class="btn btn-success" onclick="showData(2)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(9)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <div id="f1" style="display: none">
+      <form action="http://localhost:8080/getBySong" class="forms">
+        <h2>Enter a Song Name</h2>
+
+        <label for="song">Song</label>
+        <input id="song" type="text" placeholder="Song name..." name="song" />
+
+        <button type="button" class="btn btn-success" onclick="showData(3)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(1)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <div id="f2" style="display: none">
+      <form action="http://localhost:8080/getByAlbum" class="forms">
+        <h2>Enter an Album Name</h2>
+
+        <label for="album">Album</label>
+        <input
+          id="album"
+          type="text"
+          placeholder="Album name..."
+          name="album"
+        />
+
+        <button type="button" class="btn btn-success" onclick="showData(4)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(2)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <div id="f3" style="display: none">
+      <form action="http://localhost:8080/getByArtist" class="forms">
+        <h2>Enter an Artist Name</h2>
+
+        <label for="artist">Artist</label>
+        <input
+          id="artist"
+          type="text"
+          placeholder="Artist name..."
+          name="artist"
+        />
+
+        <button type="button" class="btn btn-success" onclick="showData(5)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(3)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <div id="f4" style="display: none">
+      <form action="http://localhost:8080/getByReleaseDate" class="forms">
+        <h2>Enter a Release Date</h2>
+
+        <label for="releaseDate">Release Date</label>
+        <input
+          id="releaseDate"
+          type="text"
+          placeholder="Release date..."
+          name="releaseDate"
+        />
+
+        <button type="button" class="btn btn-success" onclick="showData(6)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(4)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <div id="f5" style="display: none">
+      <form action="http://localhost:8080/getByArtistCountry" class="forms">
+        <h2>Enter an Artist Country</h2>
+
+        <label for="artistCountry">Artist Country</label>
+        <input
+          id="artistCountry"
+          type="text"
+          placeholder="Artist Country..."
+          name="artistCountry"
+        />
+
+        <button type="button" class="btn btn-success" onclick="showData(7)">
+          Find
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(5)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <button class="btn btn-dark" onclick="openF(6)">Add New Music</button><br />
+    <div id="f6" style="display: none">
+      <form action="http://localhost:8080/create" class="forms">
+        <h2>Enter New Song and Artist Details</h2>
+
+        <label for="song">Song</label>
+        <input
+          id="cSong"
+          type="text"
+          placeholder="Song name..."
+          name="song"
+        /><br />
+        <label for="album">Album</label>
+        <input
+          id="cAlbum"
+          type="text"
+          placeholder="Album name..."
+          name="album"
+        /><br />
+        <label for="artist">Artist</label>
+        <input
+          id="cArtist"
+          type="text"
+          placeholder="Artist name..."
+          name="artist"
+        /><br />
+        <label for="releaseDate">Release Date</label>
+        <input
+          id="cRD"
+          type="text"
+          placeholder="Release Date..."
+          name="releaseDate"
+        /><br />
+        <label for="artistCountry">Artist Country</label>
+        <input
+          id="cAC"
+          type="text"
+          placeholder="Artist Country..."
+          name="artistCountry"
+        /><br />
+
+        <button type="button" class="btn btn-success" onclick="createData()">
+          Create
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(6)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+    <button class="btn btn-dark" onclick="openF(7)">Update an Entry</button>
+    <br />
+    <div id="f7" style="display: none">
+      <form action="" class="forms">
+        <h2>Enter Music ID and New Music Info</h2>
+
+        <label for="id">ID</label>
+        <input
+          id="updateId"
+          type="text"
+          placeholder="ID number..."
+          name="id"
+        /><br />
+        <label for="song">Song</label>
+        <input
+          id="uSong"
+          type="text"
+          placeholder="Song name..."
+          name="song"
+        /><br />
+        <label for="album">Album</label>
+        <input
+          id="uAlbum"
+          type="text"
+          placeholder="Album name..."
+          name="album"
+        /><br />
+        <label for="artist">Artist</label>
+        <input
+          id="uArtist"
+          type="text"
+          placeholder="Artist name..."
+          name="artist"
+        /><br />
+        <label for="releaseDate">Release Date</label>
+        <input
+          id="uRD"
+          type="text"
+          placeholder="Release Date..."
+          name="releaseDate"
+        /><br />
+        <label for="artistCountry">Artist Country</label>
+        <input
+          id="uAC"
+          type="text"
+          placeholder="Artist Country..."
+          name="artistCountry"
+        /><br />
+
+        <button type="button" class="btn btn-success" onclick="updateData()">
+          Update
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(7)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+    <button class="btn btn-dark" onclick="openF(8)">Delete an Entry</button
+    ><br />
+    <div id="f8" style="display: none">
+      <form action="" class="forms">
+        <h2>Delete an Entry by ID</h2>
+
+        <label for="id">ID</label>
+        <input
+          id="deleteId"
+          type="text"
+          placeholder="ID number..."
+          name="id"
+        /><br />
+
+        <button type="button" class="btn btn-success" onclick="deleteData()">
+          Delete
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeF(8)">
+          Close
+        </button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
